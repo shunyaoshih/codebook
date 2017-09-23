@@ -1,0 +1,10 @@
+syn on
+se ai nu ru cul mouse=a
+se cin et ts=2 sw=2 sts=2
+so $VIMRUNTIME/mswin.vim
+colo desert
+se gfn=Monospace\ 14
+noremap <buffer><F9> :! g++ -std=c++14 -stdlib=libc++ -O2 -Wall -Wshadow '%' -o '%<'<CR>
+noremap <buffer><F5> :! './%<'<CR>
+noremap <buffer><F6> :! './%<' < './%<.in'<CR>
+noremap <buffer><F7> :! './%<' < './%<.in' > './%<.out'<CR>
