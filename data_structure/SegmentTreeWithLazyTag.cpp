@@ -26,8 +26,8 @@ class SegmentTree {
       st[ now ] = arr[ l ];
       return;
     }
-    build( L( now ), l, mid );
-    build( R( now ), mid + 1, r );
+    Build( L( now ), l, mid );
+    Build( R( now ), mid + 1, r );
     Pull( now );
   }
   void Update( int ql, int qr, int value, int now, int l, int r ) {
@@ -39,27 +39,27 @@ class SegmentTree {
       lazy[ now ] += value;
       return;
     }
-    if ( qr <= mid ) update( ql, qr, value, L( now ), l, mid );
-    else if ( mid < ql ) update( ql, qr, value, R( now ), mid + 1, r );
+    if ( qr <= mid ) Update( ql, qr, value, L( now ), l, mid );
+    else if ( mid < ql ) Update( ql, qr, value, R( now ), mid + 1, r );
     else {
-      update( ql, mid, value, L( now ), l, mid );
-      update( mid + 1, qr, value, R( now ), mid + 1, r );
+      Update( ql, mid, value, L( now ), l, mid );
+      Update( mid + 1, qr, value, R( now ), mid + 1, r );
     }
     Pull( now );
   }
-  int query( int ql, int qr, int now, int l, int r ) {
+  int Query( int ql, int qr, int now, int l, int r ) {
     if ( ql > qr || l > qr || r < ql )
       return 0;
     Push( now, l, r );
     if ( l == ql && qr == r )
       return st[ now ];
     if ( qr <= mid )
-      return query( ql, qr, L( now ), l, mid );
+      return Query( ql, qr, L( now ), l, mid );
     else if ( mid < ql )
-      return query( ql, qr, R( now ), mid + 1, r );
+      return Query( ql, qr, R( now ), mid + 1, r );
     else {
-      int left = query( ql, mid, L( now ), l, mid );
-      int right = query( mid + 1, qr, R( now ), mid + 1, r );
+      int left = Query( ql, mid, L( now ), l, mid );
+      int right = Query( mid + 1, qr, R( now ), mid + 1, r );
       int ans = max( left, right );
       return ans;
     }
