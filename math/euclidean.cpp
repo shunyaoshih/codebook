@@ -1,3 +1,4 @@
+// a must be greater than b
 vector< pair< int, int > > gcd( int a, int b ) {
   if ( b == 0 )
     return { 1, 0 };
