@@ -1,3 +1,4 @@
+// O( V^2 * F )
 class MinCostMaxFlow{
  public:
   static const int MAXV = 2000;
