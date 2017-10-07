@@ -1,3 +1,4 @@
+// Build: O( VlogV ), Query: O( logV )
 int tin[ N ], tout[ N ], ancestor[ N ][ 20 ];
 vector< int > v[ N ];
 
