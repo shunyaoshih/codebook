@@ -1,0 +1,38 @@
+\begin{tabular}{|c|c|c|c|c|c|}
+                         & push 
+                         & pop 
+                         & modify 
+                         & erase 
+                         & join \\
+  std::priority\_queue   & $\lg(n)$
+                         & $\lg(n)$
+                         & $n\lg(n)$
+                         & $n\lg(n)$
+                         & $n\lg(n)$ \\
+  pairing\_heap\_tag     & $1$
+                         & $\lg(n)$
+                         & $\lg(n)$
+                         & $\lg(n)$
+                         & $1$ \\
+  binary\_heap\_tag      & $\lg(n)$
+                         & $\lg(n)$
+                         & $n$
+                         & $n$
+                         & $n$ \\
+  binomial\_heap\_tag    & $1$
+                         & $\lg(n)$
+                         & $\lg(n)$
+                         & $\lg(n)$
+                         & $\lg(n)$ \\
+  rc\_binomial\_heap\_tag& $1$
+                         & $\lg(n)$
+                         & $\lg(n)$
+                         & $\lg(n)$
+                         & $\lg(n)$ \\
+  thin\_heap\_tag        & $1$
+                         & $\lg(n)$
+                         & $\lg(n)$[ps]
+                         & $\lg(n)$
+                         & $n$ \\
+\end{tabular}
+ps: $1$ if increased\_key only else $\lg(n)$
