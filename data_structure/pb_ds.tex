@@ -1,0 +1,54 @@
+#include <ext/pb_ds/priority_queue.hpp>
+__gnu_pbds::priority_queue<int, std::less<int>, __gnu_pbds::pairing_heap_tag> pq;
+
+\begin{tabular}{|c|c|c|c|c|}
+                       & push 
+                       & pop 
+                       & modify 
+                       & erase 
+                       & join
+  std::priority_queue  & \Theta(n) worst \Theta(\lg(n)) amortized
+                       & \Theta(\lg(n)) worst
+                       & \Theta(n\lg(n)) worst
+                       & \Theta(n\lg(n))
+                       & \Theta(n\lg(n)) \\
+  pairing_heap_tag     & O(1)
+                       & \Theta(n) worst \Theta(\lg(n)) amortized
+                       & \Theta(n) worst \Theta(\lg(n)) amortized
+                       & \Theta(n) worst \Theta(\lg(n)) amortized
+                       & O(1) \\
+  binary_heap_tag      & \Theta(n) worst \Theta(\lg(n)) amortized
+                       & \Theta(n) worst \Theta(\lg(n)) amortized
+                       & \Theta(n)
+                       & \Theta(n)
+                       & \Theta(n) \\
+  binomial_heap_tag    & \Theta(\lg(n)) worst O(1) amortized
+                       & \Theta(\lg(n))
+                       & \Theta(\lg(n))
+                       & \Theta(\lg(n))
+                       & \Theta(\lg(n)) \\
+  rc_binomial_heap_tag & O(1)
+                       & \Theta(\lg(n))
+                       & \Theta(\lg(n))
+                       & \Theta(\lg(n))
+                       & \Theta(\lg(n)) \\
+  thin_heap_tag        & O(1)
+                       & \Theta(n) worst \Theta(\lg(n)) amortized
+                       & \Theta(\lg(n)) worst O(1) amortized if increased_key else \Theta(\lg(n)) amortized
+                       & \Theta(n) worst \Theta(\lg(n)) amortized
+                       & \Theta(n)
+\end{tabular}
+
+point_iterator push(int key)
+void modify(point_iterator ptr,int key)
+void erase(point_iterator ptr)
+int top() 
+void pop() 
+bool empty() 
+void clear() 
+point_iterator begin() 
+point_iterator end() 
+void join(priority_queue &other) 
+1. push will return a point_iterator, which can be saved in a vector and modify or erase afterward.
+2. using begin() and end() can traverse all elements in the priority_queue.
+3. after join, other will be cleared.
