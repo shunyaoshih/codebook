@@ -1,15 +1,13 @@
-#define L(X) (X<<1)
-#define R(X) ((X<<1)+1)
-#define mid ((l+r)>>1)
+#define L( X ) ( X << 1 )
+#define R( X ) ( ( X << 1 ) + 1 )
+#define mid ( ( l + r ) >> 1 )
 
 class SegmentTree {
  public:
   static const int N = 1e5 + 10;
   int arr[ N ], st[ N << 2 ], lazy[ N << 2 ];
 
-  inline void Pull( int now ) {
-    st[ now ] = max( st[ L( now ) ], st[ R( now ) ] );
-  }
+  inline void Pull( int now ) { st[ now ] = max( st[ L( now ) ], st[ R( now ) ] ); }
   inline void Push( int now, int l, int r ) {
     if ( lazy[ now ] != 0 ) {
       if ( l != r ) {
@@ -31,16 +29,17 @@ class SegmentTree {
     Pull( now );
   }
   void Update( int ql, int qr, int value, int now, int l, int r ) {
-    if ( ql > qr || l > qr || r < ql )
-      return;
+    if ( ql > qr || l > qr || r < ql ) return;
     Push( now, l, r );
     if ( l == ql && qr == r ) {
       st[ now ] += value;
       lazy[ now ] += value;
       return;
     }
-    if ( qr <= mid ) Update( ql, qr, value, L( now ), l, mid );
-    else if ( mid < ql ) Update( ql, qr, value, R( now ), mid + 1, r );
+    if ( qr <= mid )
+      Update( ql, qr, value, L( now ), l, mid );
+    else if ( mid < ql )
+      Update( ql, qr, value, R( now ), mid + 1, r );
     else {
       Update( ql, mid, value, L( now ), l, mid );
       Update( mid + 1, qr, value, R( now ), mid + 1, r );
@@ -48,11 +47,9 @@ class SegmentTree {
     Pull( now );
   }
   int Query( int ql, int qr, int now, int l, int r ) {
-    if ( ql > qr || l > qr || r < ql )
-      return 0;
+    if ( ql > qr || l > qr || r < ql ) return 0;
     Push( now, l, r );
-    if ( l == ql && qr == r )
-      return st[ now ];
+    if ( l == ql && qr == r ) return st[ now ];
     if ( qr <= mid )
       return Query( ql, qr, L( now ), l, mid );
     else if ( mid < ql )

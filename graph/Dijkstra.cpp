@@ -10,12 +10,10 @@ vector< int > Dijkstra( int s ) {
   pq.push( make_pair( d[ s ], s ) );
   while ( 1 ) {
     int now = -1;
-    while ( !pq.empty() and visit[ now = pq.top().second ] )
-      pq.pop();
-    if ( now == -1 or visit[ now ] )
-      break;
+    while ( !pq.empty() and visit[ now = pq.top().second ] ) pq.pop();
+    if ( now == -1 or visit[ now ] ) break;
     visit[ now ] = true;
-    for ( int i = 0 ; i < v[ now ].size() ; ++i ) {
+    for ( int i = 0; i < v[ now ].size(); ++i ) {
       int child = v[ now ][ i ].first;
       int w = v[ now ][ i ].second;
       if ( !visit[ child ] and ( d[ now ] + w ) < d[ child ] ) {

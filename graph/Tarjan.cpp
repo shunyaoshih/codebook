@@ -4,15 +4,13 @@ int graph[ N ][ N ], lca[ N ][ N ];
 vector< bool > visit( N, false );
 
 void tarjan( int now ) {
-  if ( visit[ now ] )
-    return;
+  if ( visit[ now ] ) return;
   visit[ now ] = true;
 
-  for ( int i = 1 ; i <= n ; ++i )
-    if ( visit[ i ] )
-      lca[ now ][ i ] = lca[ i ][ now ] = st.Find( i );
+  for ( int i = 1; i <= n; ++i )
+    if ( visit[ i ] ) lca[ now ][ i ] = lca[ i ][ now ] = st.Find( i );
 
-  for ( int i = 1 ; i <= n ; ++i )
+  for ( int i = 1; i <= n; ++i )
     if ( g[ now ][ i ] < 1e9 and !visit[ i ] ) {
       tarjan( i );
       st.Union( i, now );
