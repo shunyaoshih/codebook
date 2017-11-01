@@ -68,5 +68,5 @@ struct BipartiteMatching { // O( ( V + E ) * sqrt( V ) )
     for(int i = n + 1; i <= n + m; i++ )
       if( dist[i] == 1 )
         rrtn.push_back( i - n );
-  
+  }
 } ob;
