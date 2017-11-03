@@ -14,7 +14,7 @@ void dfs( int now, int pnow ) {
 
   tout[ now ] = ++now_time;
 }
-bool check_ancestor( int x, int y ) { return ( tin[ x ] <= tin[ y ] and tout[ x ] >= tout[ y ] ); }
+bool check_ancestor( int x, int y ) { return ( tin[ x ] <= tin[ y ] && tout[ x ] >= tout[ y ] ); }
 int find_lca( int x, int y ) {
   if ( check_ancestor( x, y ) ) return x;
   if ( check_ancestor( y, x ) ) return y;

@@ -11,7 +11,7 @@ void tarjan( int now ) {
     if ( visit[ i ] ) lca[ now ][ i ] = lca[ i ][ now ] = st.Find( i );
 
   for ( int i = 1; i <= n; ++i )
-    if ( g[ now ][ i ] < 1e9 and !visit[ i ] ) {
+    if ( g[ now ][ i ] < 1e9 && !visit[ i ] ) {
       tarjan( i );
       st.Union( i, now );
     }
