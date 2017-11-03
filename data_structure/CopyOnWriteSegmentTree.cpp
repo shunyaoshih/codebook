@@ -18,7 +18,7 @@ class SegmentTree {
       st[ now ].value = st[ lchild ].value;
       st[ now ].who = st[ lchild ].who;
     }
-    if ( rchild != 0 and st[ rchild ].value > st[ now ].value ) {
+    if ( rchild != 0 && st[ rchild ].value > st[ now ].value ) {
       st[ now ].value = st[ rchild ].value;
       st[ now ].who = st[ rchild ].who;
     }
@@ -29,7 +29,7 @@ class SegmentTree {
   }
   void Update( int ql, int qr, int value, int who, int now = 1, int l = 1, int r = N ) {
     if ( ql > qr or qr < l or ql > r ) return;
-    if ( l == ql and qr == r ) {
+    if ( l == ql && qr == r ) {
       st[ now ].value = value;
       st[ now ].who = who;
       return;
@@ -64,7 +64,7 @@ class SegmentTree {
   }
   pair< int, int > Query( int ql, int qr, int now = 1, int l = 1, int r = N ) {
     if ( ql > qr or qr < l or ql > r ) return { 0, 0 };
-    if ( l == ql and qr == r ) {
+    if ( l == ql && qr == r ) {
       return { st[ now ].value, st[ now ].who };
     }
     if ( qr <= mid ) {

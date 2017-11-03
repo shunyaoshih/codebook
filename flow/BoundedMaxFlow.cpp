@@ -66,7 +66,7 @@ class Graph {
       Q.pop();
       if ( node == sink ) continue;
       for ( auto &neighbour : edges_[ node ] )
-        if ( from_[ neighbour ] == -1 and capacity_[ node ][ neighbour ] > 0 ) {
+        if ( from_[ neighbour ] == -1 && capacity_[ node ][ neighbour ] > 0 ) {
           from_[ neighbour ] = node;
           Q.push( neighbour );
         }

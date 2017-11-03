@@ -55,7 +55,7 @@ class SegmentTree {
   }
   pair< int, bool > Query( int prv_now, int now, int k, int l = 1, int r = N ) {
     int prv_value = st[ prv_now ].value, now_value = st[ now ].value;
-    if ( l == r and now_value - prv_value == k )
+    if ( l == r && now_value - prv_value == k )
       return make_pair( l, true );
     else if ( now_value - prv_value < k )
       return make_pair( now_value - prv_value, false );

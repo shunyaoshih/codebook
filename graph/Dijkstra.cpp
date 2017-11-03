@@ -1,3 +1,5 @@
+template< class T >
+using MinHeap = priority_queue< T, vector< T >, greater< T > >;
 vector< pair< int, int > > v[ N ];
 
 vector< int > Dijkstra( int s ) {
@@ -6,7 +8,7 @@ vector< int > Dijkstra( int s ) {
   vector< bool > visit( n + 1, false );
   d[ s ] = 0;
 
-  priority_queue< pair< int, int >, vector< pair< int, int > >, greater< pair< int, int > > > pq;
+  MinHeap< pair< int, int > > pq;
   pq.push( make_pair( d[ s ], s ) );
   while ( 1 ) {
     int now = -1;
