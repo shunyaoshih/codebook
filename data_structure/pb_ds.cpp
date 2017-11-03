@@ -38,14 +38,14 @@ struct my_nd_upd {
   virtual Node_CItr node_begin () const = 0;
   virtual Node_CItr node_end () const = 0;
   typedef int metadata_type ; //額外信息，這邊用int
-	inline void operator()(Node_Itr it,Node_CItr end_it){
-		Node_Itr l=it.get_l_child(), r=it.get_r_child();
-		int left = 0 , right = 0;
-		if(l != end_it) left = l.get_metadata();
-		if(r != end_it) right = r.get_metadata();
-		const_cast<metadata_type&>(it.get_metadata())=
+  inline void operator()(Node_Itr it,Node_CItr end_it){
+    Node_Itr l=it.get_l_child(), r=it.get_r_child();
+    int left = 0 , right = 0;
+    if(l != end_it) left = l.get_metadata();
+    if(r != end_it) right = r.get_metadata();
+    const_cast<metadata_type&>(it.get_metadata())=
       left+right+(*it)->second;
-	} 
+  } 
   //operator()功能是將節點it的信息更新，end_it表空節點
   //it是Node_Itr, *之後變成iterator, 再取->second變節點的mapped_value
   inline int prefix_sum (int x) {
