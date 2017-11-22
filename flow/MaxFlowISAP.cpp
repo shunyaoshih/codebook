@@ -1,4 +1,4 @@
-// O( V^2 * E )
+// O( V^2 * E ) V up to 2w
 #define SZ( c ) ( (int)( c ).size() )
 class MaxFlow {
  public:
