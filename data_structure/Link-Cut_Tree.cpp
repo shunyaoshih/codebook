@@ -72,14 +72,14 @@ void evert(Splay *x){
   x->push(); x->pull();
 }
 void link(Splay *x, Splay *y){
-//  evert(x);
+  evert(x);
   access(x);
   splay(x);
   evert(y);
   x->setCh(y, 1);
 }
 void cut(Splay *x, Splay *y){
-//  evert(x);
+  evert(x);
   access(y);
   splay(y);
   y->push();
@@ -87,32 +87,21 @@ void cut(Splay *x, Splay *y){
 }
 int N, Q;
 Splay *vt[MXN];
-int ask(Splay *x, Splay *y){
+Splay* root(Splay *x) {
   access(x);
-  access(y);
+  while(x->ch[0] != nil) x = x->ch[0];
   splay(x);
-  int res = x->f->val;
-  if (res == -1) res=x->val;
-  return res;
+  return x;
+}
+bool con(Splay *x, Splay *y) {
+  return root(x) == root(y);
 }
 int main(int argc, char** argv){
   scanf("%d%d", &N, &Q);
   for (int i=1; i<=N; i++)
     vt[i] = new (Splay::pmem++) Splay(i);
-  while (Q--) {
-    char cmd[105];
-    int u, v;
-    scanf("%s", cmd);
-    if (cmd[1] == 'i') {
-      scanf("%d%d", &u, &v);
-      link(vt[v], vt[u]);
-    } else if (cmd[0] == 'c') {
-      scanf("%d", &v);
-      cut(vt[1], vt[v]);
-    } else {
-      scanf("%d%d", &u, &v);
-      int res=ask(vt[u], vt[v]);
-      printf("%d\n", res);
-    }
+    // link(vt[u], vt[v]);
+    // cut(vt[u], vt[v]);
+    // con(vt[u], vt[v]);
   }
 }
